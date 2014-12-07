@@ -1,0 +1,2 @@
+; clang --target=x86-none-elf
+: boot.s |> i686-elf-as boot.s -o boot.o |> boot.o
