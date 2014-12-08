@@ -10,7 +10,7 @@ If you're feeling adventurous, you can just run the script and it should work. H
 
 Build:
 ------
-```tup upd```
+```tup init; tup```
 
 Run:
 ----
