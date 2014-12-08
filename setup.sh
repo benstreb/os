@@ -6,13 +6,26 @@ export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 mkdir -p $PREFIX/bin
 export PATH="$PREFIX/bin:$PATH"
+BINUTILS=binutils-2.24
+GCC=gcc-4.9.2
 
-set TEMP=$(mktemp -d)
+TEMP=$(mktemp -d)
 cd TEMP
-set BINUTILS=binutils-2.24
-wget http://ftp.gnu.org/gnu/binutils/$(echo $BINUTILS).tar.gz
-tar -xf $BINUTILS
+
+
+wget http://ftp.gnu.org/gnu/binutils/$BINUTILS.tar.gz
+tar -xf $BINUTILS.tar.gz
 cd $BINUTILS
 ./configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror
 make
 make install
+
+
+wget http://ftp.gnu.org/gnu/gcc/$GCC/$GCC.tar.bz2
+tar -xf $GCC.tar.bz2
+cd $GCC
+./configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c --without-headers
+make all-gcc
+#make all-target-libgcc
+make install-gcc
+#make install-target-libgcc
