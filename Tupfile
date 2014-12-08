@@ -1,2 +1,3 @@
 : boot.s |> i686-elf-as boot.s -o boot.o |> boot.o
 : kernel.c |> i686-elf-gcc -c kernel.c -o kernel.o -std=c11 -ffreestanding -O2 -Wall -Wextra |> kernel.o
+: linker.ld *.o |> i686-elf-gcc -T linker.ld -o os.bin -ffreestanding -O2 -nostdlib boot.o kernel.o |> os.bin
