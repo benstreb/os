@@ -1,2 +1,2 @@
-; clang --target=x86-none-elf
 : boot.s |> i686-elf-as boot.s -o boot.o |> boot.o
+: kernel.c |> i686-elf-gcc -c kernel.c -o kernel.o -std=c11 -ffreestanding -O2 -Wall -Wextra |> kernel.o
