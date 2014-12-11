@@ -1,4 +1,8 @@
 ARCHDIR = kernel/arch/i386
-: $(ARCHDIR)/boot.s |> i686-elf-as %f -o %o |> boot.o
-: kernel.c |> i686-elf-gcc -c %f -o %o -std=c11 -ffreestanding -O2 -Wall -Wextra |> kernel.o
+SYSROOT = kernel/
+CFLAGS = -std=c11 -ffreestanding -O2 -Wall -Wextra -I $(SYSROOT)include
+
+: $(ARCHDIR)/boot.s |> i686-elf-as %f -o %o |> %B.o
+: $(ARCHDIR)/*.c |> i686-elf-gcc -c %f $(CFLAGS) |> %B.o
+: kernel.c |> i686-elf-gcc -c %f $(CFLAGS) |> kernel.o
 : $(ARCHDIR)/linker.ld *.o |> i686-elf-gcc -T %f -o %o -ffreestanding -O2 -nostdlib |> os.bin
