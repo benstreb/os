@@ -3,6 +3,6 @@ ARCHDIR = kernel/arch/$(ARCH)
 SYSROOT = kernel/
 CFLAGS = -std=c11 -ffreestanding -O2 -Wall -Wextra -I $(SYSROOT)/include/
 
-: $(ARCHDIR)/boot.s |> i686-elf-as %f -o %o |> %B.o {objs}
+: $(ARCHDIR)/boot.S |> i686-elf-gcc -c %f |> %B.o {objs}
 : foreach $(ARCHDIR)/*.c |> i686-elf-gcc -c %f $(CFLAGS) |> %B.o {objs}
 : $(ARCHDIR)/linker.ld {objs} |> i686-elf-gcc -T %f -o %o -ffreestanding -O2 -nostdlib |> os.bin
