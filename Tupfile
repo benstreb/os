@@ -2,6 +2,10 @@ ARCH = i386
 ARCHDIR = kernel/arch/$(ARCH)
 SYSROOT = kernel/
 CFLAGS = -std=c11 -ffreestanding -O2 -Wall -Wextra -I $(SYSROOT)/include/
+ifdef RUN_TESTS
+ASFLAGS += -D RUN_TESTS
+CFLAGS += -D RUN_TESTS
+endif
 
 : $(ARCHDIR)/boot.S |> i686-elf-gcc -c %f |> %B.o {objs}
 : foreach $(ARCHDIR)/*.c |> i686-elf-gcc -c %f $(CFLAGS) |> %B.o {objs}

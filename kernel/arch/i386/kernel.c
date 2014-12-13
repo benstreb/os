@@ -5,10 +5,22 @@
 #if defined(__linux__) || !defined(__i386__)
 #error "You need to set up and use the cross compiler to build this OS"
 #endif
+
+void test_kernel_early()
+{
+    terminal_initialize();
+    terminal_writestring("Running Early Tests");
+}
  
 void kernel_early()
 {
     terminal_initialize();
+}
+
+
+void test_kernel()
+{
+    terminal_writestring("Running Tests");
 }
 
 void kernel_main()
