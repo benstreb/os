@@ -7,6 +7,10 @@ ASFLAGS += -D RUN_TESTS
 CFLAGS += -D RUN_TESTS
 endif
 
-: $(ARCHDIR)/boot.S |> i686-elf-gcc -c %f |> %B.o {objs}
-: foreach $(ARCHDIR)/*.c |> i686-elf-gcc -c %f $(CFLAGS) |> %B.o {objs}
-: $(ARCHDIR)/linker.ld {objs} |> i686-elf-gcc -T %f -o %o -ffreestanding -O2 -nostdlib |> os.bin
+cc = i686-elf-gcc
+#cc = clang -target i386--elf
+
+: $(ARCHDIR)/boot.S |> $(cc) -c %f $(ASFLAGS) |> %B.o {objs}
+: foreach $(ARCHDIR)/*.c |> $(cc) -c %f $(CFLAGS) |> %B.o {objs}
+: $(ARCHDIR)/linker.ld {objs} |> $(cc) -T %f -o %o -ffreestanding -O2 -nostdlib |> os.bin
+
