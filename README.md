@@ -8,9 +8,6 @@ Perform the steps outlined in setup - be warned that this can take a while
 
 If you're feeling adventurous, you can just run the script and it should work. However, this is deemed not recommended because it downloads and runs code over an untrusted connection.
 
-Alternatively, you can build with clang instead of gcc by entering the Tupfile and commenting out ```cc = i686-elf-gcc``` and uncommenting ```cc = clang -target i386--elf```. If you do this, you do not need to build the gcc cross-compiler.
-
-
 Get started:
 ------------
 ```tup init; tup
