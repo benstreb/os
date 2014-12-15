@@ -4,14 +4,19 @@ Run:
 ====
 Install Dependencies:
 ---------------------
-Perform the steps outlined in setup - be warned that this can take a while
+Install the binutils cross-compiler, following the steps outlined in setup (up until it starts mentioning gcc). If you'd rather build using gcc, follow all the steps in setup and swap the cc= line in the Tupfile. Make sure to add your new cross-compiler to your PATH.
 
-If you're feeling adventurous, you can just run the script and it should work. However, this is deemed not recommended because it downloads and runs code over an untrusted connection.
+Note that although setup is a shell script, it is not recommended that you just run it. It is preferred that you go through the steps manually to ensure that everything works.
 
-Get started:
-------------
-```tup init; tup
-qemu-system-i386 -kernel os.bin```
+Install qemu
+
+Build:
+------
+```tup init; tup```
+
+Run:
+----
+```qemu-system-i386 -kernel os.bin```
 
 
 Full Setup:
