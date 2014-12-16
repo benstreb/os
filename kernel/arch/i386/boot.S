@@ -42,6 +42,7 @@ _start:
     call kernel_main
 
     # Hang if kernel_main returns
+    movb $'H', 0xb8f9e
     cli
     hlt
 .Lhang:
