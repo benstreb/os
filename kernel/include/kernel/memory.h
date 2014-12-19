@@ -1,5 +1,5 @@
 #pragma once
 #include <stdbool.h>
 
-bool initialize();
-bool test_read_region();
+bool memory_initialize();
+bool test_memory_initialize();

@@ -24,12 +24,12 @@ void read_region(struct memory_region *region)
     __asm__("int %0" : : "i" (0x15) : "memory");
 }
 
-bool initialize()
+bool memory_initialize()
 {
     return true;
 }
 
-bool test_read_region()
+bool test_memory_initialize()
 {
     struct memory_region region = {0, 0, 0, 0};
     read_region(&region);
