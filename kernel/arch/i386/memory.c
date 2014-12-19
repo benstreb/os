@@ -33,5 +33,6 @@ bool test_memory_initialize()
 {
     struct memory_region region = {0, 0, 0, 0};
     read_region(&region);
-    return true;
+    memory_initialize();
+    return !region.address || !region.type;
 }

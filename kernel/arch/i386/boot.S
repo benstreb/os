@@ -27,6 +27,9 @@ _start:
     movl $stack_top, %esp
 
     # Initialize core kernel functionality
+    #ifdef RUN_TESTS
+    call test_kernel_early
+    #endif
     call kernel_early
 
     # Initialize global constructors. None yet, so this is commented out
