@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdbool.h>
 
 #pragma pack(1)
 struct memory_region
@@ -21,4 +22,16 @@ void read_region(struct memory_region *region)
             : "i" (0xE820), "i" (0), "i" (24), "i" (0x534D4150)
             : "%eax", "%ebx", "%ecx", "%edx");
     __asm__("int %0" : : "i" (0x15) : "memory");
+}
+
+bool initialize()
+{
+    return true;
+}
+
+bool test_read_region()
+{
+    struct memory_region region = {0, 0, 0, 0};
+    read_region(&region);
+    return true;
 }
