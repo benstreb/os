@@ -14,12 +14,12 @@ struct memory_region
 void read_region(struct memory_region *region)
 {
     region->extended_attributes=1;
-    __asm__("movl %0, %%es" : : "r" (region));
-    __asm__("movl %0, %%eax;\
-             movl %1, %%ebx;\
-             movl %2, %%ecx;\
-             movl %3, %%edx" :
-            : "i" (0xE820), "i" (0), "i" (24), "i" (0x534D4150)
+    __asm__("mov %0, %%di;\
+             mov %1, %%eax;\
+             mov %2, %%ebx;\
+             mov %3, %%ecx;\
+             mov %4, %%edx" :
+            : "r" ((int16_t) region), "i" (0xE820), "i" (0), "i" (24), "i" (0x534D4150)
             : "%eax", "%ebx", "%ecx", "%edx");
     __asm__("int %0" : : "i" (0x15) : "memory");
 }
