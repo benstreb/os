@@ -7,8 +7,8 @@ ASFLAGS += -D RUN_TESTS
 CFLAGS += -D RUN_TESTS
 endif
 
-#cc = i686-elf-gcc
-cc = clang -target i386--elf
+cc = i686-elf-gcc
+#cc = clang -target i386--elf
 
 : $(ARCHDIR)/boot.S |> $(cc) -c %f $(ASFLAGS) |> %B.o {objs}
 : foreach $(ARCHDIR)/*.c |> $(cc) -c %f $(CFLAGS) |> %B.o {objs}
