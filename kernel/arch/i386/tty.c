@@ -63,7 +63,7 @@ void terminal_writestring(const char* data)
 }
 
 // log_10(2^64) ~= 19.27, so 20 digits is enough for a uint64_t
-const int DIGITS_IN_UINT64 = 20
+const int DIGITS_IN_UINT64 = 20;
 
 void terminal_writenum(uint64_t num)
 {
