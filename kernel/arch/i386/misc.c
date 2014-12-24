@@ -11,6 +11,7 @@ void num_to_chars(uint64_t num, char chars[DIGITS_IN_UINT64])
     {
         int digit = num - ((num/10)*10);
         digits[i] = '0' + digit;
+        num /= 10;
     }
     i--;
     int j;
