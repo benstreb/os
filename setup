@@ -13,19 +13,19 @@ TEMP=$(mktemp -d)
 cd TEMP
 
 
+mkdir binutils; cd binutils
 wget http://ftp.gnu.org/gnu/binutils/$BINUTILS.tar.gz
 tar -xf $BINUTILS.tar.gz
-cd $BINUTILS
-./configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror
+$BINUTILS/configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror
 make
 make install
 
 
+mkdir gcc; cd gcc
 wget http://ftp.gnu.org/gnu/gcc/$GCC/$GCC.tar.bz2
 tar -xf $GCC.tar.bz2
-cd $GCC
-./configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c --without-headers
+$GCC/configure --target=$TARGET --prefix="$PREFIX" --disable-nls --enable-languages=c --without-headers
 make all-gcc
-#make all-target-libgcc
+make all-target-libgcc
 make install-gcc
-#make install-target-libgcc
+make install-target-libgcc
