@@ -8,9 +8,9 @@ CFLAGS += -D RUN_TESTS
 endif
 
 cc = i686-elf-gcc
-#cc = clang -target i386--elf
+#cc = clang -target i386-pc-elf
 
 : $(ARCHDIR)/boot.S |> $(cc) -c %f $(ASFLAGS) |> %B.o {objs}
 : foreach $(ARCHDIR)/*.c |> $(cc) -c %f $(CFLAGS) |> %B.o {objs}
-: $(ARCHDIR)/linker.ld {objs} |> i686-elf-ld -T %f -o %o |> os.bin
+: $(ARCHDIR)/linker.ld {objs} |> i686-elf-gcc -T %f -o %o -ffreestanding -nostdlib -lgcc |> os.bin
 
