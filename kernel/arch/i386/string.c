@@ -40,3 +40,13 @@ void *memmove(void *dest, const void *src, size_t n)
     }
     return dest;
 }
+
+void *memset(void *s, int c, size_t n)
+{
+    char *src_blob = (char*) s;
+    for (size_t i = 0; i < n; i++)
+    {
+        src_blob[i] = c;
+    }
+    return s;
+}
