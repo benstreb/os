@@ -19,9 +19,19 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n)
 {
     char *src_blob = (char*) src;
     char *dest_blob = (char*) dest;
-    for (size_t i = 0; i < n; i++)
+    if (src_blob > dest_blob)
     {
-        dest_blob[i] = src_blob[i];
+        for (size_t i = 0; i < n; i++)
+        {
+            dest_blob[i] = src_blob[i];
+        }
+    }
+    else if (src_blob < dest_blob)
+    {
+        for (size_t i = 0; i < n; i++)
+        {
+            dest_blob[(n-1)-i] = src_blob[(n-1)-i];
+        }
     }
     return dest;
 }
