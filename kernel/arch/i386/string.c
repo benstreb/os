@@ -27,6 +27,10 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n)
     return memmove(dest, src, n);
 }
 
+//zeroed array, "a", 0 == zeroed array
+//zeroed array, "a", 1 == "a"
+//zeroed array, "ab", 2 == "ab"
+
 void *memmove(void *dest, const void *src, size_t n)
 {
     char *src_blob = (char*) src;
