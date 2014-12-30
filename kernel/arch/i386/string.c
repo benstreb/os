@@ -52,6 +52,10 @@ void *memmove(void *dest, const void *src, size_t n)
     return dest;
 }
 
+//"abc", "bc", 2 == "bcc"
+//"bc", "abc", 2 == "aab"
+//"abc", "abc", 3 == "abc"
+
 void *memset(void *s, int c, size_t n)
 {
     char *src_blob = (char*) s;
