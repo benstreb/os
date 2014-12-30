@@ -15,6 +15,13 @@ int memcmp(const void *s1, const void *s2, size_t n)
     return 0;
 }
 
+//"", "", 0 == 0
+//"a", "b", 0 == 0
+//"a", "a", 1 == 0
+//"a", "b", 1 == -1
+//"b", "a", 1 == 1
+//"aa", "ab", 2 == -1
+
 void *memcpy(void *restrict dest, const void *restrict src, size_t n)
 {
     return memmove(dest, src, n);
