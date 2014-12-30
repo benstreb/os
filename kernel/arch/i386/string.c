@@ -65,3 +65,7 @@ void *memset(void *s, int c, size_t n)
     }
     return s;
 }
+
+//zeroed array, 'a', 0 == zeroed array
+//zeroed array, 'a', 1 == 'a'
+//zeroed array, 'a', 2 == 'aa'
