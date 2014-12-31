@@ -36,19 +36,19 @@
 - function: memmove
     tests:
         --- !equal
-            blobs:
+            arrays:
                 region: ['a', 'b', 'c', 0]
-            inputs: [!blob(region, 0), !blob(region, 1), 2]
+            inputs: [!pointer(region, 0), !pointer(region, 1), 2]
             equals: ['b', 'c', 'c', 0]
         --- !equal
-            blobs:
+            arrays:
                 region: ['a', 'b', 'c', 0]
-            inputs: [!blob(region, 1), !blob(region, 0), 2]
+            inputs: [!pointer(region, 1), !pointer(region, 0), 2]
             equals: ['a', 'a', 'b', 0]
         --- !equal
-            blobs:
+            arrays:
                 region: ['a', 'b', 'c', 0]
-            inputs: [!blob(region, 0), !blob(region, 0), 3]
+            inputs: [!pointer(region, 0), !pointer(region, 0), 3]
             equals: ['a', 'b', 'c', 0]
 
 - function: memset
