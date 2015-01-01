@@ -2,63 +2,48 @@
 
 - function: memcmp
     tests:
-        --- !equal
-            inputs: ["", "", 0]
-            equals: 0
-        --- !equal
-            inputs: ["a", "b", 0]
-            equals: 0
-        --- !equal
-            inputs: ["a", "a", 1]
-            equals: 0
-        --- !less
-            inputs: ["a", "b", 1]
-            less_than: 0
-        --- !greater
-            inputs: ["b", "a", 1]
-            greater_than: 0
-        --- !less
-            inputs: ["aa", "bb", 2]
-            less_than: 0
+        - args: ["", "", 0]
+          equals: 0
+        - args: ["a", "b", 0]
+          equals: 0
+        - args: ["a", "a", 1]
+          equals: 0
+        - args: ["a", "b", 1]
+          less_than: 0
+        - args: ["b", "a", 1]
+          greater_than: 0
+        - args: ["aa", "bb", 2]
+          less_than: 0
 
 - function: memcpy
     tests:
-        --- !equal
-            inputs: [!zeros(3), "a", 0]
-            equals: !zeros(3)
-        --- !equal
-            inputs: [!zeros(3), "a", 1]
-            equals: ['a', 0, 0]
-        --- !equal
-            inputs: [!zeros(3), "ab", 2]
-            equals: ['a', 'b', 0]
+        - args: [!zeros(3), "a", 0]
+          equals: !zeros(3)
+        - args: [!zeros(3), "a", 1]
+          equals: ['a', 0, 0]
+        - args: [!zeros(3), "ab", 2]
+          equals: ['a', 'b', 0]
 
 - function: memmove
     tests:
-        --- !equal
-            arrays:
-                region: ['a', 'b', 'c', 0]
-            inputs: [!pointer(region, 0), !pointer(region, 1), 2]
-            equals: ['b', 'c', 'c', 0]
-        --- !equal
-            arrays:
-                region: ['a', 'b', 'c', 0]
-            inputs: [!pointer(region, 1), !pointer(region, 0), 2]
-            equals: ['a', 'a', 'b', 0]
-        --- !equal
-            arrays:
-                region: ['a', 'b', 'c', 0]
-            inputs: [!pointer(region, 0), !pointer(region, 0), 3]
-            equals: ['a', 'b', 'c', 0]
+        - arrays:
+            region: ['a', 'b', 'c', 0]
+          args: [!pointer(region, 0), !pointer(region, 1), 2]
+          equals: ['b', 'c', 'c', 0]
+        - arrays:
+            region: ['a', 'b', 'c', 0]
+          args: [!pointer(region, 1), !pointer(region, 0), 2]
+          equals: ['a', 'a', 'b', 0]
+        - arrays:
+            region: ['a', 'b', 'c', 0]
+          args: [!pointer(region, 0), !pointer(region, 0), 3]
+          equals: ['a', 'b', 'c', 0]
 
 - function: memset
     tests:
-        --- !equal
-            inputs: [!zeros(3), 'a', 0]
-            equals: !zeros(3)
-        --- !equal
-            inputs: [!zeros(3), 'a', 1]
-            equals: ['a', 0, 0]
-        --- !equal
-            inputs: [!zeros(3), 'a', 2]
-            equals: ['a', 'a', 0]
+        - args: [!zeros(3), 'a', 0]
+          equals: !zeros(3)
+        - args: [!zeros(3), 'a', 1]
+          equals: ['a', 0, 0]
+        - args: [!zeros(3), 'a', 2]
+          equals: ['a', 'a', 0]
