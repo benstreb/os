@@ -26,15 +26,15 @@
 
 - function: memmove
   tests:
-    - arrays:
+    - data:
         region: ['a', 'b', 'c', 0]
       args: [!pointer(region, 0), !pointer(region, 1), 2]
       equals: ['b', 'c', 'c', 0]
-    - arrays:
+    - data:
         region: ['a', 'b', 'c', 0]
       args: [!pointer(region, 1), !pointer(region, 0), 2]
       equals: ['a', 'a', 'b', 0]
-    - arrays:
+    - data:
         region: ['a', 'b', 'c', 0]
       args: [!pointer(region, 0), !pointer(region, 0), 3]
       equals: ['a', 'b', 'c', 0]
