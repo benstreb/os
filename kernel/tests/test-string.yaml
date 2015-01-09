@@ -28,15 +28,15 @@
   tests:
     - data:
         region: ['a', 'b', 'c', 0]
-      args: [!pointer(region, 0), !pointer(region, 1), 2]
+      args: [!ptr(region, 0), !ptr(region, 1), 2]
       equals: ['b', 'c', 'c', 0]
     - data:
         region: ['a', 'b', 'c', 0]
-      args: [!pointer(region, 1), !pointer(region, 0), 2]
+      args: [!ptr(region, 1), !ptr(region, 0), 2]
       equals: ['a', 'a', 'b', 0]
     - data:
         region: ['a', 'b', 'c', 0]
-      args: [!pointer(region, 0), !pointer(region, 0), 3]
+      args: [!ptr(region, 0), !ptr(region, 0), 3]
       equals: ['a', 'b', 'c', 0]
 
 - function: memset
